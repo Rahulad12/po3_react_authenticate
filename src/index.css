@@ -1,0 +1,25 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.text-danger {
+    color: rgb(204, 22, 22);
+}
+
+.text-primary {
+    color: green;
+}
+
+.text-success {
+    color: blue;
+}
+
+.text-warning {
+    color: yellow;
+}
+
+.text-secondary {
+    color: grey;
+}
