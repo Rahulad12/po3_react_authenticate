@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const SigninForm = ({ submithandler }) => {
+const SigninForm = ({ submithandler, loading }) => {
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -23,9 +23,18 @@ const SigninForm = ({ submithandler }) => {
         setIsLoading(true);
 
         const { email, password } = formData;
-        email === "" ?? setFormErrors({ email: "Email Field is Required" })
-        password === "" ?? setFormErrors({ password: "Password Field is Required" })
+        const errors = {};
+        if (!email) errors.email = "Email Field is Required"
+        if (!password) errors.password = "Password Field is Required"
 
+        if (Object.keys(errors).length > 0) {
+            setFormErrors(errors);
+            setIsLoading(false);
+            return;
+        }
+
+        // Clear previous errors if form is valid
+        setFormErrors({});
         // Pass form data to the submit handler
         submithandler(formData);
 
