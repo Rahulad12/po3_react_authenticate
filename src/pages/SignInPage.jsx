@@ -28,7 +28,6 @@ const SignInPage = () => {
 
     return (
         <div className='signin-page'>
-            <Link to="/home">Home</Link>
             <SigninForm submithandler={submithandler} loading={loading} />
         </div>
     );
