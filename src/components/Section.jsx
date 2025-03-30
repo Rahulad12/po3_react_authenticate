@@ -2,10 +2,10 @@ import React from 'react';
 import Hero from './Hero';
 import "../styles/section.css";
 
-const Section = () => {
+const Section = ({employees}) => {
   return (
     <div>
-      <Hero />
+      <Hero employees={employees}/>
       <section className="info-section">
         <div className="info-container" id='about' >
           <h2>Why Choose Us?</h2>

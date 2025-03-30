@@ -23,3 +23,7 @@
 .text-secondary {
     color: grey;
 }
+
+.error-text {
+    color: rgba(243, 40, 4, 0.897);
+}

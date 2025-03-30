@@ -2,15 +2,18 @@ import React, { useState } from 'react'
 import "../styles/header.css"
 import Sidebar from './Sidebar'
 import { Menu } from 'lucide-react'
-const Header = () => {
+import useAuth from "../hooks/useAuth";
+import { Link } from 'react-router-dom';
+const Header = ({ employees }) => {
     const [showSidebar, setShowSidebar] = useState(false)
-    const logOut = () => {
-        console.log("Logout clicked")
+    const { logOut } = useAuth();
+    const logOutHandler = async () => {
+        await logOut();
     }
+
     const toggleSideBar = () => {
         setShowSidebar(!showSidebar)
     }
-    console.log(showSidebar)
     return (
         <div>
             <nav className='navbar'>
@@ -18,6 +21,7 @@ const Header = () => {
                     <li className='nav-link'><a href="#">Home</a></li>
                     <li className='nav-link'><a href="#about">About</a></li>
                     <li className='nav-link'><a href="#">Contact</a></li>
+                    <li className='nav-link'><Link to="/details">Details</Link></li>
                 </ul>
                 {/* This is end of the navbar where it include side bar option to click */}
                 <div className='nav-end'>
@@ -30,7 +34,7 @@ const Header = () => {
 
             {/* sidebar rendering */}
             {showSidebar && (
-                <Sidebar logOut={logOut} closeSideBar={toggleSideBar} />
+                <Sidebar logOut={logOutHandler} closeSideBar={toggleSideBar} employees={employees}/>
             )}
         </div>
     )

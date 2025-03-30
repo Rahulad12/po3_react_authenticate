@@ -23,4 +23,23 @@ const register = async (bodyData) => {
     }
 }
 
-export { login, register }
+const logout = async () => {
+    try {
+        const response = await api.post(`${AUTH_URL}/logout`);
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        showToast(error.message, "error");
+    }
+}
+const getUser = async () => {
+    try {
+        const response = await api.get(`${AUTH_URL}/user`);
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        showToast(error.message, "error");
+    }
+}
+
+export { login, register, getUser , logout};

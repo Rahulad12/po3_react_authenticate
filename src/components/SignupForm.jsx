@@ -7,7 +7,6 @@ const SignupForm = ({ submitHandler }) => {
         password: "",
         confirmPassword: ""
     });
-    console.log(formData)
     const [formErrors, setFormErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
 
