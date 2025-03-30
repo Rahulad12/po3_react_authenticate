@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "../styles/header.css"
 import Sidebar from './Sidebar'
-import { Menu, Sidebar } from 'lucide-react'
+import { Menu } from 'lucide-react'
 const Header = () => {
     const [showSidebar, setShowSidebar] = useState(false)
     const logOut = () => {
@@ -10,7 +10,7 @@ const Header = () => {
     const toggleSideBar = () => {
         setShowSidebar(!showSidebar)
     }
-
+    console.log(showSidebar)
     return (
         <div>
             <nav className='navbar'>
@@ -30,7 +30,7 @@ const Header = () => {
 
             {/* sidebar rendering */}
             {showSidebar && (
-                <Sidebar logOut={logOut} />
+                <Sidebar logOut={logOut} closeSideBar={toggleSideBar} />
             )}
         </div>
     )
