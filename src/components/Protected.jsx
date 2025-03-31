@@ -7,12 +7,10 @@ const Protected = () => {
     if (!authState.isAuthenticated) {
         return <Navigate to="/" />
     }
-    // if (!authState.isFormSubmitted && window.location.pathname !== "/details") {
-    //     return <Navigate to="/details" />;
-    // }
-    // return <Outlet />;
-
-    return authState.isFormSubmitted ? <Outlet /> : <Navigate to="/details" />
+    if (!authState.isFormSubmitted && window.location.pathname !== "/details") {
+        return <Navigate to="/details" />;
+    }
+    return <Outlet />;
 
 }
 export default Protected
