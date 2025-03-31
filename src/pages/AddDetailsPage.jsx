@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import { registerEmployee } from "../service/employeeService.js";
+import { getEmployees, registerEmployee } from "../service/employeeService.js";
 import { showToast } from "../utils/toastMessage.js";
 import { detailsFormValidator } from "../utils/formValidator.js";
+import { EmployeeContext } from "../contexts/EmployeeContext.jsx";
 import "../styles/addDetails.css";
-
 const AddDetailsPage = () => {
     const { authState, getUserDetails } = useAuth();
+    const { setEmployee } = useContext(EmployeeContext);
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -53,7 +54,9 @@ const AddDetailsPage = () => {
             const response = await registerEmployee(filterData);
             if (response.success) {
                 showToast(response.message, "success");
-                await getUserDetails();
+                //fetch employees
+                const updatedEmployees = await getEmployees();
+                setEmployee(updatedEmployees?.emp?.[0] || {});
                 navigate("/home");
             } else {
                 showToast(response.message, "error");

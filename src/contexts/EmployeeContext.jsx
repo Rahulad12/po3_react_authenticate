@@ -7,7 +7,9 @@ export const EmployeeContext = createContext();
 export const EmployeeProvider = ({ children }) => {
     const { authState } = useAuth();
     const [employee, setEmployee] = useState({});
-
+    console.log(authState)
+    console.log(authState.isAuthenticated)
+    console.log(employee)
     useEffect(() => {
         const fetchEmployee = async () => {
             try {
@@ -22,7 +24,7 @@ export const EmployeeProvider = ({ children }) => {
         fetchEmployee();
     }, [authState.isAuthenticated]);
     return (
-        <EmployeeContext.Provider value={{ employee }}>
+        <EmployeeContext.Provider value={{ employee,setEmployee }}>
             {children}
         </EmployeeContext.Provider>
     );
