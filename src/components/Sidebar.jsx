@@ -1,12 +1,13 @@
 import { X } from 'lucide-react'
-import React from 'react'
-const Sidebar = ({ logOut, closeSideBar, employees }) => {
-
+import React, { useContext } from 'react'
+import { EmployeeContext } from '../contexts/EmployeeContext'
+const Sidebar = ({ logOut, closeSideBar }) => {
+    const { employee } = useContext(EmployeeContext)
     return (
         <div>
             <nav className='side-nav'>
                 <div className='side-nav-head'>
-                    <h3 className='head-title'>{employees?.name}</h3>
+                    <h3 className='head-title'>{employee?.name}</h3>
                     <span className='close-btn' onClick={closeSideBar}><X /></span>
                 </div>
                 <ul className='nav-list'>

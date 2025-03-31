@@ -4,7 +4,7 @@ import Sidebar from './Sidebar'
 import { Menu } from 'lucide-react'
 import useAuth from "../hooks/useAuth";
 import { Link } from 'react-router-dom';
-const Header = ({ employees }) => {
+const Header = () => {
     const [showSidebar, setShowSidebar] = useState(false)
     const { logOut } = useAuth();
     const logOutHandler = async () => {
@@ -34,7 +34,7 @@ const Header = ({ employees }) => {
 
             {/* sidebar rendering */}
             {showSidebar && (
-                <Sidebar logOut={logOutHandler} closeSideBar={toggleSideBar} employees={employees}/>
+                <Sidebar logOut={logOutHandler} closeSideBar={toggleSideBar}/>
             )}
         </div>
     )

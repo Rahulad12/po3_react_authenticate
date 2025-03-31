@@ -7,6 +7,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 
 const SignupPage = () => {
   const { loginUser, authState } = useAuth();
+  console.log(authState)
   const navigate = useNavigate();
 
   // Redirect if user is authenticated
