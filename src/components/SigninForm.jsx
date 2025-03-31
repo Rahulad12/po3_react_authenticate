@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-const SigninForm = ({ submithandler, loading }) => {
+import useAuth from '../hooks/useAuth';
+const SigninForm = ({ submithandler}) => {
+    const{loading} = useAuth();
+    
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -12,7 +14,6 @@ const SigninForm = ({ submithandler, loading }) => {
         password: false
     });
 
-    const [isLoading, setIsLoading] = useState(false);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,8 +21,6 @@ const SigninForm = ({ submithandler, loading }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setIsLoading(true);
-
         const { email, password } = formData;
         const errors = {};
         if (!email) errors.email = "Email Field is Required"
@@ -29,19 +28,13 @@ const SigninForm = ({ submithandler, loading }) => {
 
         if (Object.keys(errors).length > 0) {
             setFormErrors(errors);
-            setIsLoading(false);
             return;
         }
 
         // Clear previous errors if form is valid
         setFormErrors({});
         // Pass form data to the submit handler
-        submithandler(formData);
-
-        // Simulating an async login process
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 1500);
+        submithandler(formData);;
     };
 
     return (
@@ -75,8 +68,8 @@ const SigninForm = ({ submithandler, loading }) => {
 
                 </div>
                 <div className='mb-3'>
-                    <button className='btn btn-primary' disabled={isLoading}>
-                        {isLoading ? "Logging in..." : "Login"}
+                    <button className='btn btn-primary' disabled={loading}>
+                        {loading ? "Logging in..." : "Login"}
                     </button>
                 </div>
             </form>

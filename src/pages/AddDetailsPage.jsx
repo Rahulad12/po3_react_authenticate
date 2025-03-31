@@ -25,7 +25,7 @@ const AddDetailsPage = () => {
         if (authState.isFormSubmitted) {
             navigate("/home");
         }
-    }, [authState.isFormSubmitted, navigate]);
+    }, [authState, navigate]);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });

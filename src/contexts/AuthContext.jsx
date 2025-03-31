@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
     const initialAuthState = {
         token: localStorage.getItem("token") || null,
         role: localStorage.getItem("role") || null,
-        isAuthenticated: JSON.parse(localStorage.getItem("isAuthenticated")) || false, // Fix boolean issue
+        isAuthenticated: JSON.parse(localStorage.getItem("isAuthenticated")) || false,
         message: null,
         loading: false,
         isFormSubmitted: false,
@@ -20,6 +20,7 @@ export const AuthProvider = ({ children }) => {
             setAuthState((prevState) => ({ ...prevState, loading: true, message: null, isAuthenticated: false }));
 
             const response = await login(bodyData);
+            console.log(response);
             if (response.success) {
                 const { token, role, isAuthenticated } = response.user;
 
@@ -35,7 +36,6 @@ export const AuthProvider = ({ children }) => {
                 localStorage.setItem("token", token);
                 localStorage.setItem("role", role);
                 localStorage.setItem("isAuthenticated", isAuthenticated); // Store as boolean
-
                 return true;
             } else {
                 setAuthState((prevState) => ({

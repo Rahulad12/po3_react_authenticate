@@ -17,8 +17,6 @@ const SignupForm = ({ submitHandler }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const validationResult = formValidator(formData);
-        console.log(validationResult)
-        console.log(!validationResult.isValid)
 
         // Check if form is valid
         if (!validationResult.isValid) {
@@ -33,6 +31,7 @@ const SignupForm = ({ submitHandler }) => {
         }
 
         setIsLoading(true);
+        
         const { email, password } = formData;
         submitHandler({ email, password });
 
