@@ -4,7 +4,7 @@ import { register } from "../service/authService.js"
 import useAuth from "../hooks/useAuth.jsx"
 import { showToast } from '../utils/toastMessage.js'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { ConnectionStates } from 'mongoose'
+
 
 const SignupPage = () => {
   const { loginUser, authState } = useAuth();
