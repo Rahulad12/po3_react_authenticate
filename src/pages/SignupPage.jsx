@@ -1,5 +1,5 @@
 import React from 'react'
-import SignupForm from '../components/signUpForm'
+import SignupForm from '../components/SignupForm.jsx'
 import { register } from "../service/authService.js"
 import useAuth from "../hooks/useAuth.jsx"
 import { showToast } from '../utils/toastMessage.js'

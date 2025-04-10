@@ -1,6 +1,6 @@
 import { X } from 'lucide-react'
 import React, { useContext } from 'react'
-import { EmployeeContext } from '../contexts/EmployeeContext'
+import { EmployeeContext } from '../contexts/EmployeeContext.jsx'
 const Sidebar = ({ logOut, closeSideBar }) => {
     const { employee } = useContext(EmployeeContext)
     return (

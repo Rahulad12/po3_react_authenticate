@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth.jsx";
 import { getEmployees, registerEmployee } from "../service/employeeService.js";
 import { showToast } from "../utils/toastMessage.js";
 import { detailsFormValidator } from "../utils/formValidator.js";

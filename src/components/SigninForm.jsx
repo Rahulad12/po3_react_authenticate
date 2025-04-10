@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
 const SigninForm = ({ submithandler, loading }) => {
-
-    
     const [formData, setFormData] = useState({
         email: "",
         password: ""

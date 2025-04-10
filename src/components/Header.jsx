@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import "../styles/header.css"
-import Sidebar from './Sidebar'
+import Sidebar from './Sidebar.jsx'
 import { Menu } from 'lucide-react'
-import useAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth.jsx";
 import { Link } from 'react-router-dom';
 const Header = () => {
     const [showSidebar, setShowSidebar] = useState(false)
